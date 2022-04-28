@@ -1,20 +1,68 @@
 :root {
-    font-size: 16px;
+  font-size: 16px;
+}
+
+body {
+  background-image: url("/module-1/project-1/pizza-time/images/cantina.png");
+  background-color: #cccccc;
+  background-size: cover;
+}
+
+.game-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5%;
+}
+
+#img-game-start {
+  padding: 1.5%;
+  opacity: 0;
+  animation: opacityOn 5s normal forwards;
+  animation-delay: 1s;
+  animation-iteration-count: 100;
+}
+
+@keyframes opacityOn {
+  0% {
+    opacity: 1;
   }
-  
-  * {
-    margin: 0;
-    padding: 0;
+  25% {
+    opacity: 0;
   }
-  
-  #canvas {
-    width: 800px;
-    height: 500px;
-    border: 1px solid black;
+  50% {
+    opacity: 1;
   }
-  
-  #game-start {
-    position: fixed;
-    top: 40vh;
-    left: 40vw;
+  75% {
+    opacity: 0;
   }
+  100% {
+    opacity: 1;
+  }
+}
+
+#canvas {
+  background: #fdf2d0;
+  width: 800px;
+  height: 500px;
+  outline: 12px solid red;
+  outline-style: double;
+  border-radius: 2%;
+}
+
+#game-start {
+  position: fixed;
+  top: 40vh;
+  left: 40vw;
+}
+
+#game-board {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+h3 {
+  color: white;
+}

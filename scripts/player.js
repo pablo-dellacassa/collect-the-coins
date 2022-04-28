@@ -1,14 +1,48 @@
 class Player {
-  constructor(ctx) {
+  constructor(initialCol,initalRow,imgPaths) {
     this.ctx = ctx;
-    this.width = 150;
-    this.height = 200;
-    this.y = this.ctx.canvas.height - this.height;
-    this.x = 20;
-    this.spritesCount = 3;
-    this.spriteNumber = 0;
-    this.img = new Image();
-    this.img.src = "/module-1/project-1/mario-example-game/images/marco.png";
-    this.speedY = 0;
+    this.col = initialCol
+    this.row = initalRow
+    this.orientation = 'down'
+    this.score = 0
+
+    // Save all the images in the character 
+    
+    this.imgs = {}
+    
+    
+    
+    // Loop keys of object
+    for (let orientation in imgPaths) {
+      this.imgs[orientation] = new Image()
+      this.imgs[orientation].src = imgPaths[orientation]
+    }
+  }
+  
+  drawPlayer() {
+    ctx.drawImage(
+      player.imgs[player.orientation],
+      player.col * TILE_SIZE,
+      player.row * TILE_SIZE,
+      TILE_SIZE, // Find the right ratio
+      TILE_SIZE
+    );
+  }
+  moveUp(){
+    this.row--
+    this.orientation = 'up'
+  }
+  moveDown(){
+    this.row++
+    this.orientation = 'down'
+  }
+  moveLeft(){
+    this.col--
+    this.orientation = 'left'
+  }
+  moveRight(){
+    this.col++
+    this.orientation = 'right'
   }
 }
+

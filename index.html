@@ -5,15 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles/styles.css" type="text/css" />
-    <title>Pizza Time! - The Game</title>
+    <title>Pizza Time! - Project 1 - Ironhack</title>
   </head>
   <body>
-    <canvas id="canvas"></canvas>
+    <div class="game-area">
+      <img id="img-game-name" src="/module-1/project-1/pizza-time/images/textPizzaTime.png"></img>
+      <img id="img-game-start" src="/module-1//project-1//pizza-time//images/textStart.png"></img>
+      <img id="img-game-function" src="/module-1//project-1//pizza-time//images/textArrowsFunction.png"></img>
+      <h3>Score: <span id="score">0</span></h3>
+      <h3>Time Remaining: <span id="timeRemaining">0</span></h3>
+     
+     
+      <div id="game-board">
+        <canvas id="canvas"></canvas>
+      </div>
+    </div>
 
-    <script src="./scripts/sounds.js"></script>
     <script src="./scripts/player.js"></script>
     <script src="./scripts/background.js"></script>
-    <script src="./scripts/game.js"></script>
+    <script src="./scripts/pizza.js"></script>
+    <script src="./scripts/screen1.js"></script>
+    <script src="./scripts/sounds.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
