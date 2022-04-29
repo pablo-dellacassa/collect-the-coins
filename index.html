@@ -4,28 +4,36 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles/styles.css" type="text/css" />
+    <link rel="stylesheet" href="styles/styles.css" type="text/css" />
     <title>Pizza Time! - Project 1 - Ironhack</title>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');</style>
   </head>
   <body>
     <div class="game-area">
-      <img id="img-game-name" src="/module-1/project-1/pizza-time/images/textPizzaTime.png"></img>
-      <img id="img-game-start" src="/module-1//project-1//pizza-time//images/textStart.png"></img>
-      <img id="img-game-function" src="/module-1//project-1//pizza-time//images/textArrowsFunction.png"></img>
-      <h3>Score: <span id="score">0</span></h3>
-      <h3>Time Remaining: <span id="timeRemaining">0</span></h3>
-     
+      <img id="img-game-name" src="/images/textPizzaTime.png"></img>
+      <img id="img-game-start" src="/images/textStart.png"></img>
+      <img id="img-game-function" src="/images/textArrowsFunction.png"></img>
+      <h3 id="textScore">SCORE: <span id="score">0</span></h3>
+      <h3 id="textTimeRemaining">TIME REMAINING: <span id="timeRemaining">30</span></h3>
+    </div>
      
       <div id="game-board">
-        <canvas id="canvas"></canvas>
+        <canvas id="canvas" height='550' width="550"></canvas>
       </div>
-    </div>
 
-    <script src="./scripts/player.js"></script>
-    <script src="./scripts/background.js"></script>
-    <script src="./scripts/pizza.js"></script>
-    <script src="./scripts/screen1.js"></script>
-    <script src="./scripts/sounds.js"></script>
-    <script src="./scripts/index.js"></script>
+    <script src="/scripts/game.js"></script>
+    <script src="/scripts/index.js"></script>
+    <script src="/scripts/player.js"></script>
+    <script src="/scripts/pizza.js"></script>    
+
+
+    
+    <!--
+      <script src="./scripts/background.js"></script>
+    <script src="./scripts/sounds.js"></script> -->
+
+
+
+
   </body>
 </html>

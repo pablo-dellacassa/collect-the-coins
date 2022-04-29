@@ -1,11 +1,14 @@
 class Sounds {
-    main = new Audio("/module-1/project-1/pizza-time/sounds/tarantella.mp3");
-  
-    play(sound) {
-      this[sound].play();
-    }
-  
-    pause(sound) {
-      this[sound].pause();
-    }
+  screen1 = new Audio("/sounds/main.mp3");
+ 
+  play(sound) {
+    this[sound].play();
   }
+
+  pause(sound) {
+    this[sound].pause();
+  }
+  screen2 = new Audio("/sounds/game.mp3");
+  screen3 = new Audio("/sounds/resume.mp3");
+
+}

@@ -3,9 +3,28 @@
 }
 
 body {
-  background-image: url("/module-1/project-1/pizza-time/images/cantina.png");
+  background-image: url("/images/cantina.png");
   background-color: #cccccc;
   background-size: cover;
+  margin: 2%;
+}
+
+h3 {
+  color: yellow;
+  margin: 0.5%;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 15px;
+  text-shadow: -2px 0 0 black,
+    -4px 0 0 black,
+    2px 0 0 black,
+    4px 0 0 black;
+}
+
+#game-start {
+  position: fixed;
+  top: 40vh;
+  left: 40vw;
+  display: flex;
 }
 
 .game-area {
@@ -14,6 +33,14 @@ body {
   justify-content: center;
   align-items: center;
   margin: 5%;
+  margin-top: -1.5%;
+}
+
+#game-board {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  margin-top: -2%;
 }
 
 #img-game-start {
@@ -22,6 +49,11 @@ body {
   animation: opacityOn 5s normal forwards;
   animation-delay: 1s;
   animation-iteration-count: 100;
+}
+
+#img-game-function {
+  margin-top: 20px;
+  padding-bottom: 1.5%;
 }
 
 @keyframes opacityOn {
@@ -43,26 +75,12 @@ body {
 }
 
 #canvas {
+  flex: none;
   background: #fdf2d0;
-  width: 800px;
-  height: 500px;
-  outline: 12px solid red;
+  outline: 5px solid red;
   outline-style: double;
   border-radius: 2%;
 }
 
-#game-start {
-  position: fixed;
-  top: 40vh;
-  left: 40vw;
-}
 
-#game-board {
-  margin: auto;
-  display: flex;
-  justify-content: center;
-}
 
-h3 {
-  color: white;
-}
