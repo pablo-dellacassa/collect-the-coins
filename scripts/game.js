@@ -8,13 +8,21 @@ class Game {
     this.NB_OF_TILES = 10;
     this.TILE_SIZE = this.ctx.canvas.width / this.NB_OF_TILES;
     this.printedScore = document.getElementById("score");
+    this.printedTimeRemaining = document.getElementById("timeRemaining");
   }
 
   init() {
-    if (this.ctx === null) {
+    document.onkeydown = (e) => {
+      e.preventDefault(); // Stop the default behavior (moving the screen to the left/up/right/down)
+
+      this.updateEverything(e.keyCode); // 1st part: Update player and treasure
+
+      this.drawEverything(); // 2nd part: draw everything
+    };
+    /*if (this.ctx === ctx) {
       this.ctx = document.getElementById("canvas").getContext("2d");
-    }
-    this.setCanvasToFullScreen();
+    }*/
+    //this.setCanvasToFullScreen();
     this.start();
   }
 
@@ -42,30 +50,23 @@ class Game {
         this.displaySplashStart();
         break;
       case 1:
-        document.onkeydown = (e) => {
-          e.preventDefault(); // Stop the default behavior (moving the screen to the left/up/right/down)
-
-          this.updateEverything(e.keyCode); // 1st part: Update player and treasure
-
-          this.drawEverything(); // 2nd part: draw everything
-        };
         console.log("screen 1");
         this.reset();
-        //this.frameId = window.requestAnimationFrame(this.play.bind(this));
         //this.displaySplashResume()
         break;
       case 2:
         console.log("screen 2");
+        this.gameOver();
         break;
       default:
         console.log("This screen code is unknow!");
     }
   }
 
-  setCanvasToFullScreen() {
+  /*setCanvasToFullScreen() {
     this.ctx.canvas.height = window.innerHeight;
     this.ctx.canvas.width = window.innerWidth;
-  }
+  }*/
 
   displaySplashStart() {
     const startMessage = document.getElementById("img-game-start");
@@ -76,11 +77,22 @@ class Game {
     };
   }
 
-  play() {
-    setInterval(function () {
-      this.countdown--;
-    }, 1000);
-    this.ctx.removeEventListener("click", this.play());
+  gameTime(intervalId) {
+    this.countDown--;
+    console.log(this.countDown)
+    this.printedTimeRemaining.innerText = this.countDown;
+    
+    if(this.countDown === 0){
+      this.countDown = 30
+      console.log ('helooooooooo')
+      clearInterval(intervalId);
+      intervalId = null;
+      this.screen = 2;
+      this.start();
+    }
+    
+    //this.ctx.removeEventListener("click", this.play());
+    //this.printedTimeRemaining.innerText = this.countDown;
   }
 
   drawGrid() {
@@ -105,13 +117,22 @@ class Game {
 
   drawPlayer() {
     //this.ctx.fillRect(this.player.col * this.TILE_SIZE, this.player.row * this.TILE_SIZE, this.TILE_SIZE, this.TILE_SIZE*2)
-    this.ctx.drawImage(
-      this.player.imgs[this.player.orientation],
-      this.player.col * this.TILE_SIZE,
-      this.player.row * this.TILE_SIZE,
-      this.TILE_SIZE, // Find the right ratio
-      this.TILE_SIZE
-    );
+    this.player.imgs[this.player.orientation].onload = () =>
+      this.ctx.drawImage(
+        this.player.imgs[this.player.orientation],
+        this.player.col * this.TILE_SIZE,
+        this.player.row * this.TILE_SIZE,
+        this.TILE_SIZE, // Find the right ratio
+        this.TILE_SIZE
+      );
+
+      this.ctx.drawImage(
+        this.player.imgs[this.player.orientation],
+        this.player.col * this.TILE_SIZE,
+        this.player.row * this.TILE_SIZE,
+        this.TILE_SIZE, // Find the right ratio
+        this.TILE_SIZE
+      )
 
     console.log(this.player.col, this.player.row);
   }
@@ -131,6 +152,11 @@ class Game {
     this.drawGrid();
     this.drawPizza();
     this.drawPlayer();
+  }
+
+  gameOver() {
+    this.ctx.clearRect(0,0, this.ctx.canvas.width, this.ctx.canvas.height);
+    this.ctx.fillText('GAME OVER', this.ctx.canvas.width/2, this.ctx.canvas.height/2)
   }
 
   updateEverything(keyCode) {
@@ -174,83 +200,10 @@ class Game {
     let TILE_SIZE = this.ctx.canvas.width / NB_OF_TILES;
     this.updateEverything();
     this.drawEverything();
-    this.play();
+    //this.gameTime();
+
+    let intervalId = setInterval(() => {
+      this.gameTime(intervalId);
+    }, 1000);
   }
 }
-
-/*
-
-let ctx = canvas.getContext("2d");
-let width = 300;
-let height = 300;
-const score = document.getElementById("score");
-const countdown = 30; // Countdown timer (in seconds)
-let id = null; // ID to track the setTimeout
-//let sounds = new Sounds();
-
-
-let player = new Player(0, 4, {
-  left: "/module-1/project-1/pizza-time/images/marcoLeft.png",
-  up: "/module-1/project-1/pizza-time/images/marcoBack.png",
-  right: "/module-1/project-1/pizza-time/images/marcoRight.png",
-  down: "/module-1/project-1/pizza-time/images/marcoFront.png",
-});
-
-let pizza = new Pizza(9, 4, "/module-1/project-1/pizza-time/images/pizza-slice.png");
-
-// Some constants
-let NB_OF_TILES = 10;
-let TILE_SIZE = width / NB_OF_TILES;
-
-function drawEverything() {
-  ctx.clearRect(0, 0, width, height);
-  pizza.drawPizza();
-  player.drawPlayer();
-}
-
-
-function updateEverything(keyCode) {
-  switch (keyCode) {
-    case 37:
-      if (player.col > 0) player.moveLeft();
-      break;
-    case 38:
-      if (player.row > 0) player.moveUp();
-      break;
-    case 39:
-      if (player.col < 9) player.moveRight();
-      break;
-    case 40:
-      if (player.row < 4) player.moveDown();
-      break;
-  }
-  // Check if the user is on the pizza
-  if (player.row === pizza.row && player.col === pizza.col) {
-    player.score++;
-    score.innerText = player.score;
-    pizza.setRandomPosition();
-  }
-}
-
-function reset() {
-  this.background = new Background(this.ctx);
-  this.player = new Player(this.ctx);
-}
-
-// The first drawEverything is triggered after 500ms, to be sure that all pictures are loaded
-setTimeout(() => {
-  drawEverything();
-}, 500);
-
-
-document.onkeydown = function (e) {
-  e.preventDefault(); // Stop the default behavior (moving the screen to the left/up/right/down)
-
-  // 1st part: Update player and pizza
-  updateEverything(e.keyCode);
-
-  // 2nd part: draw everything
-  drawEverything();
-};
- 
-*/

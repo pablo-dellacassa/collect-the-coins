@@ -10,11 +10,11 @@ const pizza = new Pizza(ctx);
 */
   const game = new Game(ctx);
 
-  const startArea = document.getElementsByClassName("game-area");
+ /*const startArea = document.getElementsByClassName("game-area");
   startArea[0].addEventListener("click", () => {
     startArea.textContent = "RESTART";
-    //startArea.blur();
-    game.start.bind(game);
-  });
-  game.start.call(game);
+    game.start.call(game);
+  });*/
+
+  game.init.call(game);
 };
