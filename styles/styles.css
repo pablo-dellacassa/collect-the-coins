@@ -3,7 +3,7 @@
 }
 
 body {
-  background-image: url("/images/cantina.png");
+  background-image: url("./images/cantina.png");
   background-color: #cccccc;
   background-size: cover;
   margin: 2%;
