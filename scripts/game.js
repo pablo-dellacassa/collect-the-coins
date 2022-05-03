@@ -35,9 +35,9 @@ class Game {
         const splashItalyFlag = new Image();
         const splashMarco = new Image();
         const splashPizza = new Image();
-        splashItalyFlag.src = "../images/italyFlag.png";
-        splashMarco.src = "../images/marcoFace.png";
-        splashPizza.src = "../images/pizza-slice.png";
+        splashItalyFlag.src = "/images/italyFlag.png";
+        splashMarco.src = "/images/marcoFace.png";
+        splashPizza.src = "/images/pizza-slice.png";
         splashItalyFlag.onload = () => {
           this.ctx.drawImage(splashItalyFlag, 70, 10, 200, 150);
         };
