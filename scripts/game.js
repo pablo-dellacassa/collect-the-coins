@@ -190,10 +190,10 @@ class Game {
     document.getElementById("textScore").style.display = "";
     document.getElementById("textTimeRemaining").style.display = "";
     this.player = new Player(this.ctx, 0, 0, {
-      left: "../images/marcoLeft.png",
-      up: "../images/marcoBack.png",
-      right: "../images/marcoRight.png",
-      down: "../images/marcoFront.png",
+      left: "/images/marcoLeft.png",
+      up: "/images/marcoBack.png",
+      right: "/images/marcoRight.png",
+      down: "/images/marcoFront.png",
     });
     this.pizza = new Pizza(this.ctx, 9, 4, "../images/pizza-slice.png");
     let NB_OF_TILES = 100;
