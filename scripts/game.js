@@ -195,7 +195,7 @@ class Game {
       right: "./images/marcoRight.png",
       down: "./images/marcoFront.png",
     });
-    this.pizza = new Pizza(this.ctx, 9, 4, "../images/pizza-slice.png");
+    this.pizza = new Pizza(this.ctx, 9, 4, "./images/pizza-slice.png");
     let NB_OF_TILES = 100;
     let TILE_SIZE = this.ctx.canvas.width / NB_OF_TILES;
     this.updateEverything();
