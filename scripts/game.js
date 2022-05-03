@@ -35,9 +35,9 @@ class Game {
         const splashItalyFlag = new Image();
         const splashMarco = new Image();
         const splashPizza = new Image();
-        splashItalyFlag.src = "/images/italyFlag.png";
-        splashMarco.src = "/images/marcoFace.png";
-        splashPizza.src = "/images/pizza-slice.png";
+        splashItalyFlag.src = "./images/italyFlag.png";
+        splashMarco.src = "./images/marcoFace.png";
+        splashPizza.src = "./images/pizza-slice.png";
         splashItalyFlag.onload = () => {
           this.ctx.drawImage(splashItalyFlag, 70, 10, 200, 150);
         };
@@ -190,10 +190,10 @@ class Game {
     document.getElementById("textScore").style.display = "";
     document.getElementById("textTimeRemaining").style.display = "";
     this.player = new Player(this.ctx, 0, 0, {
-      left: "/images/marcoLeft.png",
-      up: "/images/marcoBack.png",
-      right: "/images/marcoRight.png",
-      down: "/images/marcoFront.png",
+      left: "./images/marcoLeft.png",
+      up: "./images/marcoBack.png",
+      right: "./images/marcoRight.png",
+      down: "./images/marcoFront.png",
     });
     this.pizza = new Pizza(this.ctx, 9, 4, "../images/pizza-slice.png");
     let NB_OF_TILES = 100;
